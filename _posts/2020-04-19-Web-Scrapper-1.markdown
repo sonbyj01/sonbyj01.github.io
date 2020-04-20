@@ -22,7 +22,7 @@ Only problem (or inconveince, I don't know you pick) is that for certain shows l
 different episodes in a season. I don't know about the rest of you, but I would rather automated the tedious work. So, in the spirit of 
 small projects and cleaning up my terrible coding skills, I thought it would be a great idea to create a webscrapper!
 
-![SoManyLinks]({{ site.baseurl }}//assests/images/2020-04-19-Web-Scrapper-1/Torrents.PNG)
+![SoManyLinks]({{ site.baseurl }}/assests/images/2020-04-19-Web-Scrapper-1/Torrents.PNG)
 
 So let's get started. I only had a general idea of how web scraping worked but decided to look up an article or two on how to actually implement one 
 in python. Thankfully I came across this [little guide] that was more than enough to kick-start this whole shit show. 
@@ -33,7 +33,7 @@ So if you click on the website, you'll notice that first it shows you a page tha
 joy. There's a DDoS protection shit that the website uses from Cloudflare. Fine, I guess good for them. I knew I needed to bypass this somehow and I 
 was almost sure someone thought of something. DuckDuckGo away! 
 
-![CloudflareDDoSBullshit]({{ site.baseurl }}//assests/images/2020-04-19-Web-Scrapper-1/Cloudflare.PNG)
+![CloudflareDDoSBullshit]({{ site.baseurl }}/assests/images/2020-04-19-Web-Scrapper-1/Cloudflare.PNG)
 
 [Boom.] I was right. 
 
@@ -53,7 +53,7 @@ But no worries! DuckDuckGo here to save the day!
 thing built into Firefox. After typing the url of my transmission site and clicking cancel when it asked for my credentials, I saw the first row in the 
 analyzer. Right there, it said " www-authenticate: Basic realm="Transmission" "
 
-![Network Analyzer]({{ site.baseurl }}//assests/images/2020-04-19-Web-Scrapper-1/Network.PNG)
+![Network Analyzer]({{ site.baseurl }}/assests/images/2020-04-19-Web-Scrapper-1/Network.PNG)
 
 So now I know transmission uses basic authentication. On top of that, the article also provides the code to use a GET request with the url and your 
 credentials! Ah, life is so wonderful and sweet. As soon as I logged into my transmission site, I was going to go right into 'Inspect Elements'. However, 
@@ -65,7 +65,7 @@ After configuring my computer to send all traffic through Burp Suite via proxy, 
 find a POST request packet that had a method of "torrent-add". Mhmm interesting... It also showed the magnet url that I previously requested for. So I knew 
 this was it! After adding a couple more lines of code to make the POST requests, I was done! 
 
-![CoolBurpSuite]({{ site.baseurl }}//assests/images/2020-04-19-Web-Scrapper-1/Burp_Suite.PNG)
+![CoolBurpSuite]({{ site.baseurl }}/assests/images/2020-04-19-Web-Scrapper-1/Burp_Suite.PNG)
 
 FINALLY! I'M DONE! AFTER 3 HOURS OF DUCKDUCKGOING AND CODING AND JUMPING ONTO MY BED OUT OF FRUSTURATION, I WAS DONE!
 
