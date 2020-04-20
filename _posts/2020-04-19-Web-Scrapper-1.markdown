@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Web Scrapping BabyTorrent to Transmission (1/2)"
+title:  "Web Scrapping BabyTorrent.se to Transmission (1/2)"
 date:   2020-04-19 00:00:00 -0400
 categories: Projects
-tags: Projects, Webscrapping, Python3
-description: Web Scrapping BabyTorrent to Transmission
+tags: Projects Webscrapping Python3
+description: And I thought this would take one day...
 ---
 So with a Plex Media Server set up and all, the whole point is to stream movies and tv shows from it, right? 
 
