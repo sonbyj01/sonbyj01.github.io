@@ -22,7 +22,7 @@ Only problem (or inconveince, I don't know you pick) is that for certain shows l
 different episodes in a season. I don't know about the rest of you, but I would rather automated the tedious work. So, in the spirit of 
 small projects and cleaning up my terrible coding skills, I thought it would be a great idea to create a webscrapper!
 
-![SoManyLinks](https://blog.hson.dev/assets/images/2020-04-19-Web-Scrapper-1/Torrents.PNG)
+![SoManyLinks]({{ site.baseurl }}/assets/images/2020-04-19-Web-Scrapper-1/Torrents.PNG)
 
 So let's get started. I only had a general idea of how web scraping worked but decided to look up an article or two on how to actually implement one 
 in python. Thankfully I came across this [little guide] that was more than enough to kick-start this whole shit show. 
@@ -33,7 +33,7 @@ So if you click on the website, you'll notice that first it shows you a page tha
 joy. There's a DDoS protection shit that the website uses from Cloudflare. Fine, I guess good for them. I knew I needed to bypass this somehow and I 
 was almost sure someone thought of something. DuckDuckGo away! 
 
-![CloudflareDDoSBullshit](https://blog.hson.dev/assets/images/2020-04-19-Web-Scrapper-1/Cloudflare.PNG)
+![CloudflareDDoSBullshit]({{ site.baseurl }}/assets/images/2020-04-19-Web-Scrapper-1/Cloudflare.PNG)
 
 [Boom.] I was right. 
 
