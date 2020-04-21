@@ -22,13 +22,17 @@ Only problem (or inconveince, I don't know you pick) is that for certain shows l
 different episodes in a season. I don't know about you, but I would rather automated this tedious work. So, in the spirit of 
 small projects and bettering my coding skills, I thought it would be a great idea to create a webscrapper!
 
+-----
 ![SoManyLinks]({{ site.baseurl }}/assets/images/2020-04-19-Web-Scrapper-1/Torrents.PNG)
+-----
 
 So let's get started. I only had a general idea of how web scraping worked: that being, I knew that in HTML there are tags that you apply 
-and you get specify which tag you want by searching through the source code and identifying the characteristics of the tag (i.e. <a> to specify hyperlinks, etc.). 
+and you get specify which tag you want by searching through the source code and identifying the characteristics of the tag (i.e. '\<a\>' to specify hyperlinks, etc.). 
 So one of the first thing I did was look at the source code and pick out which 'characteristics' I want to search for. 
 
+-----
 ![SourceSourceSource]({{ site.baseurl }}/assets/images/2020-04-19-Web-Scrapper-1/SourceCode.PNG)
+-----
 
 As you can see above, some of the 'characteristics' I will be looking for is the 'a' tag and the 'https://sportsat.online' substring in the 'href' 
 argument.
@@ -43,12 +47,16 @@ So after reading through the article and starting to code, I already ran into an
 So if you go to the website, you'll notice that first it shows you a page that says " Checking your browser before accessing babytorrent.se ". Oh 
 joy. There's a DDoS protection shit that the website uses from Cloudflare. 
 
+-----
 ![CloudflareDDoSBullshit]({{ site.baseurl }}/assets/images/2020-04-19-Web-Scrapper-1/Cloudflare.PNG)
+-----
 
 Fine, I guess good for them, they remembered to use protection. Ah so frsturated though. 
 *I know!* I knew I needed to bypass this and I was almost sure someone thought of something. DuckDuckGo away! 
 
+-----
 ![Cloudflare-skippidy]({{ site.baseurl }}/assets/images/2020-04-19-Web-Scrapper-1/Cloudflare-Scrapper.PNG)
+-----
 
 [Boom.] I was right. 
 
@@ -76,7 +84,9 @@ But no worries! DuckDuckGo here to save the day!
 thing built into Firefox. After typing the url of my transmission site and clicking cancel when it asked for my credentials, I saw the first row in the 
 analyzer. Right there, it said " www-authenticate: Basic realm="Transmission" "
 
+-----
 ![Network Analyzer]({{ site.baseurl }}/assets/images/2020-04-19-Web-Scrapper-1/Network.PNG)
+-----
 
 So now I know transmission uses basic authentication. On top of that, the article also provides the code to use a GET request with the url and your 
 credentials! Ah, life is so wonderful and sweet. As soon as I logged into my transmission site, I was going to go right into 'Inspect Elements'. However, 
@@ -90,7 +100,9 @@ After configuring my computer to send all traffic through Burp Suite via proxy, 
 find a POST request packet that had a method of "torrent-add". Mhmm interesting... It also showed the magnet url that I previously requested for. So I knew 
 this was it! After adding a couple more lines of code to make the POST requests, I was done! 
 
+-----
 ![CoolBurpSuite]({{ site.baseurl }}/assets/images/2020-04-19-Web-Scrapper-1/Burp_Suite.PNG)
+-----
 
 ```python
 # Payload that contains all the information needed to complete a POST request for a magnet link
