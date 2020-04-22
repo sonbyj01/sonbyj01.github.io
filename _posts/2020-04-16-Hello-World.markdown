@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "0. Hello World"
+title:  "Hello World"
 date:   2020-04-16 00:00:00 -0400
 categories:
 tags: 
