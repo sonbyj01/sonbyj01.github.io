@@ -50,7 +50,7 @@ So more often that not, unless you're hosting your own Gitlab server [like me], 
 
 -----
 
-##### Create an account
+### Create an account
 Go to [Github.com] and click "Sign up". Fill in each box with its respective information. Remember: the username you pick now will stick with you forever... and ever...
 
 -----
@@ -69,7 +69,7 @@ You have successfully created an account!
 
 -----
 
-##### Setting up your desktop/laptop
+### Setting up your desktop/laptop
 Now the following instructions are for users on Windows. These steps should be fairly similar to those users on Linux and Mac however. 
 
 Okay so now that we've created a Github account, we need something else for our computer to communicate with Github, and that's where [Git] comes into play. Now technically speaking, git is already installed on your computer but (hopefully) you'll see why I like this slightly more. Go ahead and install [Git] onto your computer. After you go through the installation and all, you should have 'Git Bash' when you search for it; open it. 
@@ -296,7 +296,7 @@ git push origin branch1
 I hope this was a resourceful guide on how to use git. And remember, 
 
 -----
-![git_meme]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/git_meme.PNG)
+![git_meme]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/git_meme.png)
 
 -----
 
