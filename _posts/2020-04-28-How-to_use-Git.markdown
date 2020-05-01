@@ -15,7 +15,9 @@ Oh boy, do I have the perfect candidate for you:
 Introducing... Git!
 
 -----
+
 ![GitLogo]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/git_logo.gif)
+
 -----
 
 # So what is git? 
@@ -32,39 +34,49 @@ Well there are some platforms that are readily available for you to use git with
 
 -----
 ![GitlabLogo]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/gitlab.jpg)
+
 -----
 ![GithubLogo]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/github.png)
+
 -----
 
 # Okay, then what about git commands? What's that?
-Git commands are essentially that: they're just commands for git. You can \~\~Google\~\~ DuckDuckGo search these commands but at least for me, most of them didn't make sense unless I saw them being applied. So, that's exactly what I will be doing! 
+Git commands are essentially that: they're just commands for git. You can ~~Google~~ DuckDuckGo search these commands but at least for me, most of them didn't make sense unless I saw them being applied. So, that's exactly what I will be doing! 
 
 # How to set up Github
+-----
 ## Setting up an account 
 So more often that not, unless you're hosting your own Gitlab server [like me], you're best bet is to use [Github.com]. It's free and a lot of people use it!
 
-1. **Create an account** 
+-----
+
+##### Create an account
 Go to [Github.com] and click "Sign up". Fill in each box with its respective information. Remember: the username you pick now will stick with you forever... and ever...
 
 -----
 ![Signup]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/signup.PNG)
+
 -----
 
 You'll then be prompted to answer some questions on why you joined Github, afterwhich you'll then be sent a verification email to the address you gave it before. Once you verify your email, you'll be greeted with this page: 
 
 -----
 ![Github_main]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/github_main.PNG)
+
 -----
 
 You have successfully created an account!
 
-2. **Setting up your desktop/laptop**
+-----
+
+##### Setting up your desktop/laptop
 Now the following instructions are for users on Windows. These steps should be fairly similar to those users on Linux and Mac however. 
 
 Okay so now that we've created a Github account, we need something else for our computer to communicate with Github, and that's where [Git] comes into play. Now technically speaking, git is already installed on your computer but (hopefully) you'll see why I like this slightly more. Go ahead and install [Git] onto your computer. After you go through the installation and all, you should have 'Git Bash' when you search for it; open it. 
 
 -----
 ![gitbash]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/gitbash.PNG)
+
 -----
 
 Now, the beautiful thing about installing from [Git] is that it also installs something called ["MinGW"]. This will essentially give you a 'Unix' feeling, as in most of the basic commands you type in here will also apply to Linux and Mac. Now let's start syncing Github with your computer! Type in the following two commands, replacing 
@@ -78,6 +90,7 @@ ssh-keygen -C "testing.sonbyj01@gmail.com" -t rsa       # replace "testing.sonby
 
 -----
 ![keygen]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/global_sshkeygen.PNG)
+
 -----
 
 Then type in the following command and copy the output. 
@@ -88,35 +101,44 @@ cat ~/.ssh/id_rsa.pub
 
 -----
 ![sshkey]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/sshkey.PNG)
+
 -----
 
 Then go back to [Github.com]. Click on your profile picture, click "Settings" > "SSH and GPG keys" > "New SSH key".
 
 -----
 ![settings]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/settings.PNG)
+
 -----
 
 Paste the long string that you copied before and add a name to that key. 
 
 -----
 ![addingssh]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/addingssh.PNG)
+
 -----
 
 After you save the ssh key, your "SSH and GPG keys" page should look something like this. 
 
 -----
 ![new_settings]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/new_settings.PNG)
+
 -----
 
 Woo! You finally synced your computer and Github! If you're still having issues, refer to this page on [connecting to Github with SSH]. 
 
-3. **Creating your first repository**
+-----
+
+# How to use Github
+-----
+### Creating your first repository
 Now it's time to create your first repository! *I recommend making a repository on Github and then cloning that to your desktop.*
 
 Click on your profile picture > "Your repositories" > "New". You should be on a page similar to this then. 
 
 -----
 ![create_repo]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/create_repo.PNG)
+
 -----
 
 Add a repository name: this will be the name of your 'project'. You can then either choose 'Public' or 'Private', initialize a 'README', add '.gitignore', and add a 'license'.
@@ -128,12 +150,14 @@ Once you've created your repository, you'll be redirected to that repository's p
 
 -----
 ![repo]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/repo.PNG)
+
 -----
 
 Click on "Clone or download", make sure it says "Clone with SSH", and click the copy button icon right next to the URL. 
 
 -----
 ![clone]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/clone.PNG)
+
 -----
 
 Then head back to your MINGW terminal. Now a bit of a side node but here are some ['bash commands'] you can use to navigate your way around the terminal. 
@@ -149,6 +173,7 @@ pwd
 
 -----
 ![bash]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/bash.PNG)
+
 -----
 
 Now I'm going to clone my repository onto my Desktop. 
@@ -162,12 +187,14 @@ git clone git@github.com:t35t-4cc0unt/Hello-World.git
 
 -----
 ![cloning_desktop]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/cloning_desktop.PNG)
+
 -----
 
 If you check on your terminal, you should see your repository name. In my case, it's 'Hello-World'.
 
 -----
 ![cloning_desktop]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/successful_clone.PNG)
+
 -----
 
 Now enter your repository folder using cd and then open the repository using a code editor (I will be using [VS Code]). If you haven't done so already, download the *free* program.
@@ -179,12 +206,19 @@ code .
 
 -----
 ![opening_code]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/opening_repo.PNG)
+
 -----
 
 If you have VS Code installed, it should have opened with your repository. Now let's doing something pretty simple. I'm going to edit the README.md file and add a small program to this folder. Once I have done that, I will be updating my repository using terminal again. (Note: you can technically do it from VS code, but I'm not going over that right now.)
 > git checkout -b <new_branch> - create a new 'branch' on your repository (good practice!) more information on [branches]
+
+
 > git add <file/folder(s)> - add file/folder(s) that will be pushed to Github (you can also use * to specify all folders and files in that current directory)
+
+
 > git commit -m '<message>' - add a message to Github that should describe the changes you've made to the file/folder(s)
+
+
 > git push origin <new_branch> - push the file/folder(s) you added before from your computer (origin) to 'new_branch'
 
 ```bash
@@ -196,6 +230,7 @@ git push origin branch1
 
 -----
 ![push_new]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/push_new.PNG)
+
 -----
 
 Woo! Congratulations! You've made your first push!
@@ -204,38 +239,45 @@ To check it out, go back to your repository page. Click on where it says "Branch
 
 -----
 ![view_branch1]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/view_branch1.PNG)
+
 -----
 
 And boom, there are the changes you've made!
 
 -----
 ![done_branch1]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/done_branch1.PNG)
+
 -----
 
-4. **Manage Pull requests**
+### Manage Pull requests
 Now notice how there's a yellow, long box and at the end there's a green box labeled "Compare & pull request". Essentially how Github is structured is that there is a 'master' branch that should be working and have the final iteration of changes. It's the 'master' branch for a reason... Now if you want to make some edits to your code, you would branch off of the master and make edits there. That's what we did before when we did 'git checkout -b branch1'. Now, if you're happy with the edits and changes you've made to your code, you can then 'merge' your branch and the master branch, leaving the master branch updated with content from said branch. This is what the "Compare & pull request" is allowing you to do. 
 
 So, click on "Compare & pull request"
 
 -----
 ![compare_pull1]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/compare_pull1.PNG)
+
 -----
 
 In this upper section, you can see the commit message that you wrote previously when pushing. If you're happy with the edits, click "Create pull request" > then "Merge pull request" > then "Confirm merge". If you scroll down further, you can also see the specific changes that will be made to your files in the master branch.  
 
 -----
 ![compare_pull2]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/compare_pull2.PNG)
+
 -----
 
 If you also want, on the right side, there's an option to pick either 'Unified' or 'Split'. The split option looks like the one below. 
 
 -----
 ![compare_pull3]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/compare_pull3.PNG)
+
 -----
 
 Now that you completed the merge request, go back to your repository page and under the master branch you should see your file edits/changes. 
 
-5. **End of Day Sequence**
+-----
+
+### End of Day Sequence
 Now let's say you've been working the entire day, just cranking out code left and right from \*cough stackoverflow and your innovative mind, and it's time to pack up and head back home. Your 'end-of-day' protocol should look something a little like this. 
 > git checkout <existing_branch> - switch to an existing branch
 
@@ -248,9 +290,15 @@ git push origin branch1
 
 -----
 ![end-of-day]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/end-of-day.PNG)
+
 -----
 
-I hope this was a resourceful guide on how to use git. 
+I hope this was a resourceful guide on how to use git. And remember, 
+
+-----
+![git_meme]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/git_meme.PNG)
+
+-----
 
 Thanks for reading - 
 sonbyj01
