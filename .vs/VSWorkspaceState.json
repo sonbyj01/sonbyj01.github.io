@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\_posts",
-    "\\_posts_progress"
+    "\\_includes"
   ],
-  "SelectedNode": "\\assets",
+  "SelectedNode": "\\_includes\\header.html",
   "PreviewInSolutionExplorer": false
 }
