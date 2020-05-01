@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to use Git(?)"
+title:  "How does one use Git"
 date:   2020-04-28 00:00:00 -0400
 categories: Tutorial
 tags: Tutorial Git
