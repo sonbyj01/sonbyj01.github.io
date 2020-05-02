@@ -79,7 +79,7 @@ Okay so now that we've created a Github account, we need something else for our 
 
 -----
 
-Now, the beautiful thing about installing from [Git] is that it also installs something called ["MinGW"]. This will essentially give you a 'Unix' feeling, as in most of the basic commands you type in here will also apply to Linux and Mac. Now let's start syncing Github with your computer! Type in the following two commands, replacing 
+Now, the beautiful thing about installing from [Git] is that it also installs something called ["MinGW"]. This will essentially give you a 'Unix' feeling, as in most of the basic commands you type in here will also apply to Linux and Mac. Now let's start syncing Github with your computer! Type in the following commands. **NOTE:** if you don't want to set up SSH with your Github account, you can skip all the instructions regarding SSH. You will instead clone your repository using HTTPS. 
 
 ```bash
 git config --global user.name "H Son"       # replace "H Son" with your name
@@ -153,7 +153,7 @@ Once you've created your repository, you'll be redirected to that repository's p
 
 -----
 
-Click on "Clone or download", make sure it says "Clone with SSH", and click the copy button icon right next to the URL. 
+Click on "Clone or download", make sure it says "Clone with SSH", and click the copy button icon right next to the URL. **HOWEVER**, you can alternatively use HTTPS. When you push later on, you will instead just type in your Github account information.
 
 -----
 ![clone]({{ site.baseurl }}/assets/images/2020-04-28-How-to_use-Git/clone.PNG)
@@ -182,7 +182,8 @@ Now I'm going to clone my repository onto my Desktop.
 
 ```bash
 cd Desktop
-git clone git@github.com:t35t-4cc0unt/Hello-World.git
+git clone git@github.com:t35t-4cc0unt/Hello-World.git # this is for SSH cloning
+git clone https://github.com/t35t-4cc0unt/Hello-World.git # this is for HTTPS cloning
 ``` 
 
 -----
@@ -213,13 +214,16 @@ If you have VS Code installed, it should have opened with your repository. Now l
 > git checkout -b \<new_branch\> - create a new 'branch' on your repository (good practice!) more information on [branches]
 
 
-> git add <file/folder(s)> - add file/folder(s) that will be pushed to Github (you can also use * to specify all folders and files in that current directory)
+> git add \<file/folder(s)\> - add file/folder(s) that will be pushed to Github (you can also use * to specify all folders and files in that current directory)
 
 
-> git commit -m <message> - add a message to Github that should describe the changes you've made to the file/folder(s)
+> git reset \<file/folder(s)\> - 'resets' the folders and files that you've added; leave blank to undo all 'adds' you've made
 
 
-> git push origin <new_branch> - push the file/folder(s) you added before from your computer (origin) to 'new_branch'
+> git commit -m \'\<message\>\' - add a message to Github that should describe the changes you've made to the file/folder(s)
+
+
+> git push origin \<new_branch\> - push the file/folder(s) you added before from your local git repository (origin) to the remote repository 'new_branch'
 
 ```bash
 git checkout -b 'branch1'
@@ -277,9 +281,12 @@ Now that you completed the merge request, go back to your repository page and un
 
 -----
 
+### Updating your local repository from remote repository 
+So you and your buddy are working on the same branch 
+
 ### End of Day Sequence
 Now let's say you've been working the entire day, just cranking out code left and right from \*cough stackoverflow and your innovative mind, and it's time to pack up and head back home. Your 'end-of-day' protocol should look something a little like this. 
-> git checkout <existing_branch> - switch to an existing branch
+> git checkout \<existing_branch\> - switch to an existing branch
 
 ```bash
 git checkout branch1
