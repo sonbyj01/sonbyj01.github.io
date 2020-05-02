@@ -210,13 +210,13 @@ code .
 -----
 
 If you have VS Code installed, it should have opened with your repository. Now let's doing something pretty simple. I'm going to edit the README.md file and add a small program to this folder. Once I have done that, I will be updating my repository using terminal again. (Note: you can technically do it from VS code, but I'm not going over that right now.)
-> git checkout -b <new_branch> - create a new 'branch' on your repository (good practice!) more information on [branches]
+> git checkout -b \<new_branch\> - create a new 'branch' on your repository (good practice!) more information on [branches]
 
 
 > git add <file/folder(s)> - add file/folder(s) that will be pushed to Github (you can also use * to specify all folders and files in that current directory)
 
 
-> git commit -m '<message>' - add a message to Github that should describe the changes you've made to the file/folder(s)
+> git commit -m <message> - add a message to Github that should describe the changes you've made to the file/folder(s)
 
 
 > git push origin <new_branch> - push the file/folder(s) you added before from your computer (origin) to 'new_branch'
