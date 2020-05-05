@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Web Scrapping BabyTorrent.se to Transmission (1/2)"
+title:  "Web Scrapping BabyTorrent.se to Transmission"
 date:   2020-04-19 00:00:00 -0400
 categories: Projects
 tags: Projects Webscrapping Python3
