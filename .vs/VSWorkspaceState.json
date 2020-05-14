@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\_includes"
+    "\\_data",
+    "\\_data\\values",
+    "\\_sass\\scss"
   ],
-  "SelectedNode": "\\_includes\\header.html",
+  "SelectedNode": "\\_data\\values\\en.yml",
   "PreviewInSolutionExplorer": false
 }
