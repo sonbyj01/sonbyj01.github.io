@@ -10,6 +10,8 @@ So if you were here at some point and noticed that my other webscrapping tutoria
 but the content that you torrent can be illegal... So instead I will be showing how to webscrape some data from [Wunderground]! And possibily graph it
 nicely using [Plotly]!
 
+-----
+
 # Part 1: Webscrapping Wunderground
 
 So essentially, webscrapping is simply the process of extracting information from a website by looking at elements in the source code (HTML) or at least 
@@ -17,7 +19,7 @@ that's how I'm implementing this program...
 
 So the first step I would take is to look for the specific 'elements' that I'm looking for. In my program, I will specify the url that contains the location that I
 want to pull data from so I don't have to deal with GET and POST requests and all the other bullshit that wouldn't really take long to figure out but too lazy to 
-figure out:) In my case, the url would be https://www.wunderground.com/weather/us/ny/manhasset/11030. 
+figure out:) In my case, the url would be: https://www.wunderground.com/weather/us/ny/manhasset/11030. 
 
 When you go to this url, you should see something like these photos. 
 
@@ -34,7 +36,7 @@ some unique references to help find these data values. I will only do it for the
 
 -----
 
-![third]({{ site.baseurl }}/assets/images/2020-05-24-Automate-web-scrapping-weather/wunderground_second.PNG)
+![third]({{ site.baseurl }}/assets/images/2020-05-24-Automate-web-scrapping-weather/wunderground_inspect_element.PNG)
 
 -----
 
@@ -118,7 +120,11 @@ You know thinking about it, I thought I wrote nice and short commments that desc
 a dictionary that contains all the weather data, date, and time, I finally convert it to a data frame. I then see if there's already data within the previous data frame; 
 if so, then append, if not, then reassign. And finally, send the entire data back to the pickle file. 
 
+-----
+
 # Part 2: Automating webscrapper script
+
+-----
 
 # Part 3: Graphing collected data
 
