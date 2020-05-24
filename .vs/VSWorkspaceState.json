@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\_data",
-    "\\_data\\values"
+    "\\_data\\values",
+    "\\_posts",
+    "\\_posts_progress"
   ],
-  "SelectedNode": "\\_data\\links.yml",
+  "SelectedNode": "\\_posts_progress\\2020-04-28-How-to-use-Git-redit.markdown",
   "PreviewInSolutionExplorer": false
 }
