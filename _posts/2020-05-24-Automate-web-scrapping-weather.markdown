@@ -1,11 +1,15 @@
 ---
 layout: post
-title:  "Automate web scrapping - Wunderground"
+title:  "Automating web scrapper - Wunderground"
 date:   2020-04-19 00:00:00 -0400
 categories: Projects
 tags: Projects Webscrapping Python3 Plotly Automation
 description: Also plotting some data with Plotly! 
 ---
+[Github Repository] [Sample Graph]
+
+-----
+
 So if you were here at some point and noticed that my other webscrapping tutorial is down, it's because technically ['torrent'] itself is not illegal 
 but the content that you torrent can be illegal... So instead I will be showing how to webscrape some data from [Wunderground]! And possibily graph it
 nicely using [Plotly]!
@@ -124,21 +128,48 @@ if so, then append, if not, then reassign. And finally, send the entire data bac
 
 # Part 2: Automating webscrapper script
 
+Because there are libraries that the python script needs and I don't want to install them globally, I created a virtual environment that will be sourced each time the script runs. 
+In the script.sh, I first source the virtual environment that I created and installed the dependecies for my python script. I then enter the folder of the project. The reason I 
+do this is because I was getting an issue where the pickle file woudn't be able to save in the directory that I specificed in the python script. Now after turning the python 
+script into an executable, I run the script and then deactivate the virtual environment because I don't need it anymore. This script runs every 15 minutes on one of my servers 
+via crontab. When using this script on your own machine, make sure you update the absolute path for your machine specifically. I also included the format of the crontab line 
+that I used to run the script every 15 minutes. 
+
+```bash
+crontab -e
+# insert -> */15 * * * * /home/helen/projects/weather_scrapper/script.sh
+
 -----
 
 # Part 3: Graphing collected data
 
+I'm not too sure what I'm going to do with the data that I've been collecting but for now I decided to learn how to use Plotly and graph the data! After opening the pickle, 
+I iterated through each row, appending the date and time (which I string formatted first), temperature, dew point, humidity, and rainfall into separate lists because 
+these lists are going to be used as the y-values with respective to the date time. Afterwards, we add each individual 'trace', or line graph in this case, by stating the 
+x-axis as the date-time string that was formatted beforehand and each y-axis as a different trace. 
 
+```python
+fig.add_trace(
+    go.Scatter(x=date_time, y=temperature, name='Temperature',
+               line=dict(color='royalblue', width=2))
+)
+fig.add_trace(
+    go.Scatter(x=date_time, y=dew_point, name='Dew Point',
+               line=dict(color='firebrick', width=2))
+)
+# etc...
+``` 
 
-
-
-
-
-
-
-
+Now, I got a little bored and decided that I wanted to be able to view the different graphs by adding a drop down menu. After a bit of searching, I used the 'update' method 
+to update the layout of the graph. The thing to keep in mind is when updating the 'visible' list in args. The number of boolean values should be equivalent to the number of 
+traces that you added before, within that order as well. For example, if you add a trace that plots date-time vs. temperature and then add another trace that plots date-time 
+vs. dew point, then by specifying the 'visible' option as [True, True] will plot both graphs while [True, False] will only plot the date-time vs. temperature graph. The graph 
+of the data that I've collected so far can be viewed [here]. 
 
 ['torrent']: (https://en.wikipedia.org/wiki/BitTorrent)
 [Wunderground]: (https://www.wunderground.com/)
 [Plotly]: (https://plotly.com/)
 [Colab Research from Google]: (https://colab.research.google.com/notebooks/intro.ipynb)
+[here]: (https://public.sonbyj01.xyz/projects/weather_scrapping/temp-plot.html)
+[Sample Graph]: (https://public.sonbyj01.xyz/projects/weather_scrapping/temp-plot.html)
+[Github Repository]: (https://github.com/sonbyj01/weather_scrapper)

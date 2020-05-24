@@ -1,10 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\_data\\values",
+    "\\assets",
+    "\\assets\\images",
+    "\\assets\\images\\2020-05-24-Automate-web-scrapping-weather",
     "\\_posts",
     "\\_posts_progress"
   ],
-  "SelectedNode": "\\_posts_progress\\2020-04-28-How-to-use-Git-redit.markdown",
+  "SelectedNode": "\\_posts\\2020-05-24-Automate-web-scrapping-weather.markdown",
   "PreviewInSolutionExplorer": false
 }
