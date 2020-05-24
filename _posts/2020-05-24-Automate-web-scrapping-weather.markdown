@@ -6,7 +6,8 @@ categories: Projects
 tags: Projects Webscrapping Python3 Plotly Automation
 description: Also plotting some data with Plotly! 
 ---
-[Github Repository]     [Sample Graph]
+[Github Repository]
+[Sample Graph]
 
 -----
 
