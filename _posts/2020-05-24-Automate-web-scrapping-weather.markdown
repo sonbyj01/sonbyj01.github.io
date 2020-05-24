@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Automating web scrapper - Wunderground"
-date:   2020-04-19 00:00:00 -0400
+date:   2020-05-24 00:00:00 -0400
 categories: Projects
 tags: Projects Webscrapping Python3 Plotly Automation
 description: Also plotting some data with Plotly! 
 ---
-[Github Repository] [Sample Graph]
+[Github Repository]     [Sample Graph]
 
 -----
 
@@ -138,6 +138,7 @@ that I used to run the script every 15 minutes.
 ```bash
 crontab -e
 # insert -> */15 * * * * /home/helen/projects/weather_scrapper/script.sh
+```
 
 -----
 
@@ -166,10 +167,10 @@ traces that you added before, within that order as well. For example, if you add
 vs. dew point, then by specifying the 'visible' option as [True, True] will plot both graphs while [True, False] will only plot the date-time vs. temperature graph. The graph 
 of the data that I've collected so far can be viewed [here]. 
 
-['torrent']: (https://en.wikipedia.org/wiki/BitTorrent)
-[Wunderground]: (https://www.wunderground.com/)
-[Plotly]: (https://plotly.com/)
-[Colab Research from Google]: (https://colab.research.google.com/notebooks/intro.ipynb)
-[here]: (https://public.sonbyj01.xyz/projects/weather_scrapping/temp-plot.html)
-[Sample Graph]: (https://public.sonbyj01.xyz/projects/weather_scrapping/temp-plot.html)
-[Github Repository]: (https://github.com/sonbyj01/weather_scrapper)
+['torrent']: https://en.wikipedia.org/wiki/BitTorrent
+[Wunderground]: https://www.wunderground.com/
+[Plotly]: https://plotly.com/
+[Colab Research from Google]: https://colab.research.google.com/notebooks/intro.ipynb
+[here]: https://public.sonbyj01.xyz/projects/weather_scrapping/temp-plot.html
+[Sample Graph]: https://public.sonbyj01.xyz/projects/weather_scrapping/temp-plot.html
+[Github Repository]: https://github.com/sonbyj01/weather_scrapper
