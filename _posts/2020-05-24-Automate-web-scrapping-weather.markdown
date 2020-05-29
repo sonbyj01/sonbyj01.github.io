@@ -10,22 +10,34 @@ description: Also plotting some data with Plotly!
 
 -----
 
-So if you were here at some point and noticed that my other webscrapping tutorial is down, it's because technically ['torrent'] itself is not illegal 
-but the content that you torrent can be illegal... So instead I will be showing how to webscrape some data from [Wunderground]! And possibily graph it
-nicely using [Plotly]!
+So as it turns out, we're not in China and there are actually copyright laws that I have to abide by! Who would've known?
+
+All jokes aside (for the most part), if you saw my previous blog at one point, you might have noticed that I took it down. (If you haven't seen it, 
+disregard everything I've said up to this part, besides the part about China and copyright laws. After a good friend of mine strongly suggested that 
+I take it down and implement the webscrapper on something else, I decided to write one for scrapping weather data!
+
+Now I may write about the underlying motivation for this specifically but we'll just have to see...
+
+Oh, and this would also be a great opportunity for me to try out [Plotly]! Just because it looks pretty damn cool compared to good ol' matlibplot. 
 
 -----
 
 # Part 1: Webscrapping Wunderground
 
-So essentially, webscrapping is simply the process of extracting information from a website by looking at elements in the source code (HTML) or at least 
-that's how I'm implementing this program... 
+So for those who don't know what webscrapping is, it's essentially scrapping things from the web... 
 
-So the first step I would take is to look for the specific 'elements' that I'm looking for. In my program, I will specify the url that contains the location that I
-want to pull data from so I don't have to deal with GET and POST requests and all the other bullshit that wouldn't really take long to figure out but too lazy to 
-figure out:) In my case, the url would be: https://www.wunderground.com/weather/us/ny/manhasset/11030. 
+woaHHHHH really?! I didn't know that! Alright no need for your sarcastic comments. 
 
-When you go to this url, you should see something like these photos. 
+Webscrapping is simply the process of extracting information from a website by looking at elements in the source code (HTML)
+
+or at least that's how I'm implementing this program... 
+
+Alright cool, so how do I get started? Well the first step you should take is pick a website that you want to extract some data from. In my case, that will be 
+[Wunderground], and more specifically the weather for Manhasset (just chosen out of random, absolutely coincidental...). Make note of that URL, so in my case it
+will be: [https://www.wunderground.com/weather/us/ny/manhasset/11030](https://www.wunderground.com/weather/us/ny/manhasset/11030). Now technically I can script 
+my program so it can send a POST request for the location that I want from the homepage of [Wunderground] but I'm lazy so I'm just going to hard code the URL. 
+
+Now when you go to this url, you should see something like these photos. 
 
 -----
 
@@ -34,9 +46,12 @@ When you go to this url, you should see something like these photos.
 
 -----
 
-Now in the first photo, the data that I want to extract from here is the nice big 60 in the middle of that circle and in the second photo, the data I want to 
-extract are pressure, visibility, dew point, humidity, rainfall, and snow depth. So now that I have my eyes on the prize, it's time to inspect element and find 
-some unique references to help find these data values. I will only do it for the first one (temperature), but I'm sure you can figure the other ones out. 
+Okay cool cool cool, so now after roaming through the webpage, I've locked my focus on specific values that I want to pull: the temperature in the middle of the 
+circle on top and most of the data from the 'ADDITIONAL CONDITIONS' section. With that in mind, I'm going to 'Inspect Elements' and find those values in the HTML 
+code. From here, I can find unique attributes within the code, which is basically the driving force of this script. 
+
+For all intents and purposes (and out of sheer laziness), I will only follow through with finding and pulling the temperature. But hey! Think about it this way: 
+I'm giving you an exercise for you to practice this on your own! And don't worry, I'll be posting my code as well just in case you're in a rush to figure something out. 
 
 -----
 
@@ -44,15 +59,17 @@ some unique references to help find these data values. I will only do it for the
 
 -----
 
-As you can see in the image, the 60 that represents the temperature is contained within the element 'span'. 
+Awesome, so as you can see in the image above, the 60 that represents the temperature is tagged with 'span' and uses the class 'wu-value wu-value-to'. 
 
 ```html
 <span class="wu-value wu-value-to" _ngcontent-app-root-c122="">60</span>
 ```
 
-Therefore, when I run my webscrapper, I should be searching for the element 'span' with class value of 'wu-value wu-value-to'. Alrighty then, let's jump into the code!
+Noice! That means when I run my webscrapper, I should be searching for the tag 'span' with class value of 'wu-value wu-value-to'. Alrighty then, let's jump into the code!
 
-So the first thing I'm going to do is make a request to the url that contains the data that I want. Afterwards, I'm going to use BeautifulSoup to make the requested url 
+-----
+
+So the first thing I have to do is make a request to the url that contains the data that I want. Afterwards, I'm going to use BeautifulSoup to make the requested url 
 into a usable and readable form. 
 
 ```python
@@ -62,21 +79,26 @@ soup = BeautifulSoup(response.text, 'html.parser')
 ```
 
 Now I need to actually find the data that I'm looking for in order to pull the correct data value. As I said before, the elements I probably should be looking for are 
-'span' and 'wu-value wu-value-to'. So, I will find all elements that satisfy these two conditions. After printing out these found elements, I figured that I only need 
-the first element of that array, so that's exactly the data I will take away from this. 
+'span' and 'wu-value wu-value-to'. Therefore, I will use the 'find' function to specify which elements/tags/stuff I am looking for. I will then print out what is has 
+found so I can see if the data I want is part of the results. After printing the 'temperature_results', I quickly noticed that the first element of the array contains 
+the temperature that I want, so I store the zeroth index into 'temperature'. (If you thought it would be 1, this ain't for you because this ain't matlab bud; 
+matlab is the wack one for indexing arrays at 1). 
 
 ```python
 temperature_results = soup.find('span', class_="wu-value wu-value-to")
 temperature = str(temperature_results.contents[0])
 ```
 
-And now I have successfully taken the temperature from Wunderground! You can figure out the rest, it's essentially the same process, though you may need to use .contents
-twice instead of once... Also, I highly recommend doing this on some version of Juypter notebook because it was extremely easy for me to run a line or two of code instead of
-rerunning the program over and over again. If you don't have Juypter notebook access from school or whatnot, then you can use [Colab Research from Google]. I originally wrote
-this program using Colab Research but then moved all my code into regular python because I wanted to run this as a script. 
+Anddd boom! Now I have successfully taken the temperature data from Wunderground! Just repeat the same process with the other data that you want to extract. However, I 
+will make a note that for the other ones, you may need to do '.contents' twice... Just sayin' man... 
 
-Now if you take a look at the scrapper.py program that I wrote, you'll notice a whole bunch of other lines that I wrote that I didn't explain yet. Well just deal with it and 
-figure it out on your own, I'm sure you got this;)
+And another note, I would highly recommend writing this program using Juypter notebook first because it will enable you to run sections of your code quickly, instead of 
+making new request each time you run the entire program again. If you don't have access to Juypter notebook from school or something, I would suggest using [Colab Research 
+from Google]. (Not sponsored by Google, not important enough...) I originally wrote this script using Colab Research but then moved all my code into regular python 
+because I wanted to run this as a executable script (as you can see with my SHEBANG at the top). 
+
+Now there are a bunch of other lines of code that I included in my scrapper.py program and those are mostly for me and my purposes, but I'm sure you can figure out what I'm 
+doing anyways:)
 
 ```python
 try:
@@ -124,30 +146,37 @@ You know thinking about it, I thought I wrote nice and short commments that desc
 a dictionary that contains all the weather data, date, and time, I finally convert it to a data frame. I then see if there's already data within the previous data frame; 
 if so, then append, if not, then reassign. And finally, send the entire data back to the pickle file. 
 
+And there you have it! That's Webscrapping 101! 
+
 -----
 
 # Part 2: Automating webscrapper script
 
-Because there are libraries that the python script needs and I don't want to install them globally, I created a virtual environment that will be sourced each time the script runs. 
-In the script.sh, I first source the virtual environment that I created and installed the dependecies for my python script. I then enter the folder of the project. The reason I 
-do this is because I was getting an issue where the pickle file woudn't be able to save in the directory that I specificed in the python script. Now after turning the python 
-script into an executable, I run the script and then deactivate the virtual environment because I don't need it anymore. This script runs every 15 minutes on one of my servers 
-via crontab. When using this script on your own machine, make sure you update the absolute path for your machine specifically. I also included the format of the crontab line 
-that I used to run the script every 15 minutes. 
+Now I have a small little desktop that's acting as my 'server' (I only call it that because I never shut it down). It currently runs CentOS... 7? 8? 9? 10? Eh, at least I 
+remember how to count. Anywho, my plan was to run this script every 15 minutes so I can collect data at that interval. So to go about this, I decided to just use the default 
+cron utility. However, one of the good practices that I've learned over the years is to create virtual environments for my python projects, instead of installing them directly 
+to the global directory. The issue is that I don't know how to activate the virtual environment and then run my script and then turn it back off... Unless I create a bash script!
+
+So that's exactly what I did. Essentially in this bash script, I am turning on the virtual environment that contains the installed packages needed for the program, I run the program, 
+and then I turn off the virtual environment. And this all happens every 15 minutes! Now I will let the record show that I was running into an issue where if I ran the script with its 
+absolute path, it won't actually allow the program to save the pickle... Wack man... So I instead decided to just change directories into the project folder and run the script 
+relatively.
 
 ```bash
 crontab -e
 # insert -> */15 * * * * /home/helen/projects/weather_scrapper/script.sh
 ```
 
+And now boom, you have a thing collecting weather data every 15 minutes!
+
 -----
 
 # Part 3: Graphing collected data
 
-I'm not too sure what I'm going to do with the data that I've been collecting but for now I decided to learn how to use Plotly and graph the data! After opening the pickle, 
-I iterated through each row, appending the date and time (which I string formatted first), temperature, dew point, humidity, and rainfall into separate lists because 
-these lists are going to be used as the y-values with respective to the date time. Afterwards, we add each individual 'trace', or line graph in this case, by stating the 
-x-axis as the date-time string that was formatted beforehand and each y-axis as a different trace. 
+By this point, I've sort of lost my purpose... I, more or less, just wanted to graph some stuff and play around with Plotly. So, I wrote a separate program called 'graph.py' 
+that does exactly that! In the program, after opening the pickle, I iterated through each row, appending the date and time (which I string formatted first), temperature, 
+dew point, humidity, and rainfall into separate lists because these lists are going to be used as the y-values with respective to the date time. Afterwards, I added each 
+individual 'trace', or line graph in this case, by stating the x-axis as the date-time string that was formatted beforehand and each y-axis as a different trace. 
 
 ```python
 fig.add_trace(
@@ -166,6 +195,15 @@ to update the layout of the graph. The thing to keep in mind is when updating th
 traces that you added before, within that order as well. For example, if you add a trace that plots date-time vs. temperature and then add another trace that plots date-time 
 vs. dew point, then by specifying the 'visible' option as [True, True] will plot both graphs while [True, False] will only plot the date-time vs. temperature graph. The graph 
 of the data that I've collected so far can be viewed [here]. 
+
+And there it goes ladies and gentlemen, that's it! 
+
+If you liked this post, make sure you give it a thumbs up and smash that subscribe butto... Oh wait... Wrong platform... 
+
+
+Thanks for reading - 
+
+sonbyj01
 
 ['torrent']: https://en.wikipedia.org/wiki/BitTorrent
 [Wunderground]: https://www.wunderground.com/
