@@ -1,29 +1,25 @@
-# Jekyll configuration
+permalink: /:year:month:day/:title
+url: blog.hson.dev
+baseurl: /
 
+# variables
 name: Henry Son
-description: Henry's Blog
+description: 
+google_verification: null
 
-# url is currently only used only for the RSS feed in feed.xml
-url: https://github.com/sonbyj01/sonbyj01.github.io
 
-# baseurl will often be '', but for a project page on gh-pages, it needs to
-# be the project name.
-# *** IMPORTANT: If your local "jekyll serve" throws errors change this to '' or
-#     run it like so: jekyll serve --baseurl=''
-baseurl: '/'
-## default date_format
-date_format: 
-  title: "%B-%-d-%Y"
-  archive: "%b"
-  categories: "%b-%Y"
-  tag: "%b-%Y"
-# Language
-lan: "en" 
+# File management
+include: [".htaccess"]
+exclude: ["README.md", "LICENSE"]
 
-paginate: 10
+# Sass
+sass:
+  style: :compressed
+  sass_dir: _sass
 
-highlighter: rouge
+# Markdown
 markdown: kramdown
-gems: ['jekyll-paginate']
-
-exclude: ['README.md', 'LICENSE', "*.bak"]
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    disable : true
