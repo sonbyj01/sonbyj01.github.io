@@ -76,11 +76,7 @@ figure {
 .page-title,
 .post-title,
 .post-title a {
-  color: $body-color;
-  
-@media (prefers-color-scheme: dark) {
   color: $body-color-dark;
-  }
 }
 
 .page-title,
@@ -93,11 +89,7 @@ figure {
   display: block;
   margin-top: -.5rem;
   margin-bottom: 1rem;
-  color: $body-color;
-  
-@media (prefers-color-scheme: dark) {
   color: $body-color-dark;
-  }
 }
 
 .permalink {
@@ -105,11 +97,9 @@ figure {
   font-size: 90%;
   margin-top: -.9rem;
   margin-bottom: 1.5rem;
-  color: $body-color;
-  
-@media (prefers-color-scheme: dark) {
+
   color: $body-color-dark;
-  }
+
 }
 
 .external-link {
@@ -118,11 +108,9 @@ figure {
   margin-top: -.9rem;
   margin-bottom: 1.5rem;
   opacity: .5;
-  color: $body-color;
 
-@media (prefers-color-scheme: dark) {
   color: $body-color-dark;
-  }
+
 }
 
 .tag-list {
@@ -130,11 +118,9 @@ figure {
   padding-bottom: 4px;
   padding-right: 8px;
   border-radius: 5px;
-  color: $body-color;
+
+  color: $code-dark;
   
-  @media (prefers-color-scheme: dark) {
-	color: $code-dark;
-	}
 }
 
 // Related posts
@@ -142,13 +128,10 @@ figure {
   padding-top: 2rem;
   padding-bottom: 2rem;
   margin-bottom: 2rem;
-  border-top: 1px solid #d4d4d4;
-  border-bottom: 1px solid #d4d4d4;
-  
-@media (prefers-color-scheme: dark) {
+
   border-top: 1px solid #333333;
   border-bottom: 1px solid #333333;
-  }
+
 }
 
 .PageNavigation {
@@ -186,16 +169,13 @@ figure {
     }
 
     a:hover {
-      color: $light;
       text-decoration: none;
-	 
-    @media (prefers-color-scheme: dark) {
+
 	  color: $dark;
       }
 
       small {
         color: inherit;
 	    }
-    }
   }
 }

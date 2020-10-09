@@ -1,0 +1,28 @@
+I"(<p><a class="fixed" href="https://github.com/sonbyj01">github</a>
+<!-- <a class='soon' href="https://git.sonbyj01.xyz/henry.son">gitlab</a> -->
+<a class="improved" href="https://www.linkedin.com/in/sonbyj01/">linkedin</a>
+<a class="added" href="https://twitch.tv/henryjson50">twitch</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">About_Me</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'Henry J Son'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clearance</span> <span class="o">=</span> <span class="s">'DoD Top Secret Security Clearance'</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">school</span> <span class="o">=</span> <span class="s">'The Cooper Union for the Advancement of Science and Art'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grade</span> <span class="o">=</span> <span class="s">'Junior'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">major</span> <span class="o">=</span> <span class="s">'Electrical and Computer Engineering'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gpa</span> <span class="o">=</span> <span class="bp">None</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">personal_email</span> <span class="o">=</span> <span class="s">'sonbyj01@gmail.com'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">school_email</span> <span class="o">=</span> <span class="s">'son3@cooper.edu'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phone_number</span> <span class="o">=</span> <span class="s">'516-761-0525'</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">interests</span> <span class="o">=</span> <span class="p">[</span><span class="s">'pentesting'</span><span class="p">,</span> 
+                          <span class="s">'reverse engineering'</span><span class="p">,</span>
+                          <span class="s">'forensics'</span><span class="p">,</span>
+                          <span class="s">'sysadmin'</span><span class="p">,</span> 
+                          <span class="s">'networking'</span><span class="p">,</span>
+                          <span class="s">'IoT technology'</span><span class="p">,</span>
+                          <span class="s">'robotics'</span><span class="p">]</span>
+</code></pre></div></div>
+:ET

@@ -13,9 +13,10 @@ title: Experience
 # The Cooper Union
 - <i>MicroLab Technician</i> <br>
 <i>Sept '19 - Present</i>
-    - Managed the Electrical Engineering department’s servers, which handle all users, computers, and data for the department, performing weekly maintenance and resolving user issues
-    - Migrated services from virtual machines to docker containers
-    - Investigated Let’s Encrypt certification for department website and self-hosting web conferencing application Jitsi
+    - Managed the Electrical Engineering department’s servers, which handle file storage (AFS), user authentication (Kerberos), user authorization (LDAP), DHCP/DNS (dnsmasq), and GPU clustering (SLURM) for the department
+    - Implemented new network structure that enables: (1) floor router (pfSense) to assign static public IPv4 addresses and dynamic private IPv4 addresses to connected devices; (2) link aggregation to increase bandwidth and allow fail-over between servers; and (3) two points of failure to increase uptime for services running on the servers
+    - Migrated services such as NGINX reverse proxy, Jupyter notebook, and dnsmasq from virtual machines to docker containers, reducing the amount of resources that were divided by virtualization
+
 
 - <i>Makerspace Operator</i> <br>
 <i>Sept '19 - Present</i>

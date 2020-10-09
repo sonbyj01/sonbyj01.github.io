@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 <a class='fixed' href="https://github.com/sonbyj01">github</a>
-<a class='soon' href="https://git.sonbyj01.xyz/henry.son">gitlab</a>
+<!-- <a class='soon' href="https://git.sonbyj01.xyz/henry.son">gitlab</a> -->
 <a class='improved' href="https://www.linkedin.com/in/sonbyj01/">linkedin</a>
 <a class='added' href="https://twitch.tv/henryjson50">twitch</a>
 

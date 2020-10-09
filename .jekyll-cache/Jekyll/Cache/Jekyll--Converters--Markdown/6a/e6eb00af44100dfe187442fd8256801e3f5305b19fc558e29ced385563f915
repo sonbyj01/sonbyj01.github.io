@@ -1,0 +1,193 @@
+I"K<hr />
+
+<p><a href="https://github.com/sonbyj01/weather_scrapper">Github Repository</a> – <a href="https://public.sonbyj01.xyz/projects/weather_scrapping/temp-plot.html">Sample Graph</a></p>
+
+<hr />
+
+<p>So as it turns out, we’re not in China and there are actually copyright laws that I have to abide by! Who would’ve known?</p>
+
+<p>All jokes aside (for the most part), if you saw my previous blog at one point, you might have noticed that I took it down. (If you haven’t seen it, 
+disregard everything I’ve said up to this part, besides the part about China and copyright laws. After a good friend of mine strongly suggested that 
+I take it down and implement the webscrapper on something else, I decided to write one for scrapping weather data!</p>
+
+<p>Now I may write about the underlying motivation for this specifically but we’ll just have to see…</p>
+
+<p>Oh, and this would also be a great opportunity for me to try out <a href="https://plotly.com/">Plotly</a>! Just because it looks pretty damn cool compared to good ol’ matlibplot.</p>
+
+<hr />
+
+<h1 id="part-1-webscrapping-wunderground">Part 1: Webscrapping Wunderground</h1>
+
+<p>So for those who don’t know what webscrapping is, it’s essentially scrapping things from the web…</p>
+
+<p>woaHHHHH really?! I didn’t know that! Alright no need for your sarcastic comments.</p>
+
+<p>Webscrapping is simply the process of extracting information from a website by looking at elements in the source code (HTML)</p>
+
+<p>or at least that’s how I’m implementing this program…</p>
+
+<p>Alright cool, so how do I get started? Well the first step you should take is pick a website that you want to extract some data from. In my case, that will be 
+<a href="https://www.wunderground.com/">Wunderground</a>, and more specifically the weather for Manhasset (just chosen out of random, absolutely coincidental…). Make note of that URL, so in my case it
+will be: <a href="https://www.wunderground.com/weather/us/ny/manhasset/11030">https://www.wunderground.com/weather/us/ny/manhasset/11030</a>. Now technically I can script 
+my program so it can send a POST request for the location that I want from the homepage of <a href="https://www.wunderground.com/">Wunderground</a> but I’m lazy so I’m just going to hard code the URL.</p>
+
+<p>Now when you go to this url, you should see something like these photos.</p>
+
+<hr />
+
+<p><img src="/assets/images/2020-05-24-Automate-web-scrapping-weather/wunderground_first.PNG" alt="first" />
+<img src="/assets/images/2020-05-24-Automate-web-scrapping-weather/wunderground_second.PNG" alt="second" /></p>
+
+<hr />
+
+<p>Okay cool cool cool, so now after roaming through the webpage, I’ve locked my focus on specific values that I want to pull: the temperature in the middle of the 
+circle on top and most of the data from the ‘ADDITIONAL CONDITIONS’ section. With that in mind, I’m going to ‘Inspect Elements’ and find those values in the HTML 
+code. From here, I can find unique attributes within the code, which is basically the driving force of this script.</p>
+
+<p>For all intents and purposes (and out of sheer laziness), I will only follow through with finding and pulling the temperature. But hey! Think about it this way: 
+I’m giving you an exercise for you to practice this on your own! And don’t worry, I’ll be posting my code as well just in case you’re in a rush to figure something out.</p>
+
+<hr />
+
+<p><img src="/assets/images/2020-05-24-Automate-web-scrapping-weather/wunderground_inspect_element.PNG" alt="third" /></p>
+
+<hr />
+
+<p>Awesome, so as you can see in the image above, the 60 that represents the temperature is tagged with ‘span’ and uses the class ‘wu-value wu-value-to’.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"wu-value wu-value-to"</span> <span class="na">_ngcontent-app-root-c122=</span><span class="s">""</span><span class="nt">&gt;</span>60<span class="nt">&lt;/span&gt;</span>
+</code></pre></div></div>
+
+<p>Noice! That means when I run my webscrapper, I should be searching for the tag ‘span’ with class value of ‘wu-value wu-value-to’. Alrighty then, let’s jump into the code!</p>
+
+<hr />
+
+<p>So the first thing I have to do is make a request to the url that contains the data that I want. Afterwards, I’m going to use BeautifulSoup to make the requested url 
+into a usable and readable form.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">URL</span> <span class="o">=</span> <span class="s">"https://www.wunderground.com/weather/us/ny/manhasset/11030"</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s">'html.parser'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now I need to actually find the data that I’m looking for in order to pull the correct data value. As I said before, the elements I probably should be looking for are 
+‘span’ and ‘wu-value wu-value-to’. Therefore, I will use the ‘find’ function to specify which elements/tags/stuff I am looking for. I will then print out what is has 
+found so I can see if the data I want is part of the results. After printing the ‘temperature_results’, I quickly noticed that the first element of the array contains 
+the temperature that I want, so I store the zeroth index into ‘temperature’. (If you thought it would be 1, this ain’t for you because this ain’t matlab bud; 
+matlab is the wack one for indexing arrays at 1).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temperature_results</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'span'</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s">"wu-value wu-value-to"</span><span class="p">)</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">temperature_results</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Anddd boom! Now I have successfully taken the temperature data from Wunderground! Just repeat the same process with the other data that you want to extract. However, I 
+will make a note that for the other ones, you may need to do ‘.contents’ twice… Just sayin’ man…</p>
+
+<p>And another note, I would highly recommend writing this program using Juypter notebook first because it will enable you to run sections of your code quickly, instead of 
+making new request each time you run the entire program again. If you don’t have access to Juypter notebook from school or something, I would suggest using <a href="https://colab.research.google.com/notebooks/intro.ipynb">Colab Research 
+from Google</a>. (Not sponsored by Google, not important enough…) I originally wrote this script using Colab Research but then moved all my code into regular python 
+because I wanted to run this as a executable script (as you can see with my SHEBANG at the top).</p>
+
+<p>Now there are a bunch of other lines of code that I included in my scrapper.py program and those are mostly for me and my purposes, but I’m sure you can figure out what I’m 
+doing anyways:)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">old_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s">'./weather_data.pickle'</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">FileNotFoundError</span> <span class="k">as</span> <span class="n">fnf</span><span class="p">:</span>
+    <span class="n">old_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>I wanted to have one pickle file that stores all the data that the scrapper collects each time it runs. I used specifically pickle because (1) there was already a built-in 
+function to read and dump to pickle from pandas and (2) it would preserve all the metadata that I dump and read. Now the reason why I used pandas is because I wanted to be 
+one of those kool kids in data science that use pandas #swag. In here, I check if there’s already an existing pickle file. If there is, then I want to load those old data 
+values because I will eventually append the new data onto the old data. If not, then just initialize a new data frame.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># gets current date and time
+</span><span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s">'Day'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">d'</span><span class="p">)]</span>
+<span class="n">data</span><span class="p">[</span><span class="s">'Month'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">m'</span><span class="p">)]</span>
+<span class="n">data</span><span class="p">[</span><span class="s">'Year'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">Y'</span><span class="p">)]</span>
+<span class="n">data</span><span class="p">[</span><span class="s">'Hour'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">H'</span><span class="p">)]</span>
+<span class="n">data</span><span class="p">[</span><span class="s">'Minute'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">M'</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<p>Because in the end I want to graph the data that I collected with respect to time, I stored the current time and date into a dictionary of data that would eventually 
+be appended to a data frame (ooooHHH pandas, am I kool kid yet?).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># sees if there's previous data and append, otherwise move on
+</span><span class="k">if</span> <span class="n">old_data</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="n">old_data</span> <span class="o">=</span> <span class="n">df</span>
+    <span class="c1"># print('empty')
+</span><span class="k">else</span><span class="p">:</span>
+    <span class="n">old_data</span> <span class="o">=</span> <span class="n">old_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c1"># print('not empty')
+</span>
+<span class="c1"># stores into pickle file
+# print(old_data)
+</span><span class="n">old_data</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s">'./weather_data.pickle'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You know thinking about it, I thought I wrote nice and short commments that described what I was doing but screw it, I already made it this far. So now that I have 
+a dictionary that contains all the weather data, date, and time, I finally convert it to a data frame. I then see if there’s already data within the previous data frame; 
+if so, then append, if not, then reassign. And finally, send the entire data back to the pickle file.</p>
+
+<p>And there you have it! That’s Webscrapping 101!</p>
+
+<hr />
+
+<h1 id="part-2-automating-webscrapper-script">Part 2: Automating webscrapper script</h1>
+
+<p>Now I have a small little desktop that’s acting as my ‘server’ (I only call it that because I never shut it down). It currently runs CentOS… 7? 8? 9? 10? Eh, at least I 
+remember how to count. Anywho, my plan was to run this script every 15 minutes so I can collect data at that interval. So to go about this, I decided to just use the default 
+cron utility. However, one of the good practices that I’ve learned over the years is to create virtual environments for my python projects, instead of installing them directly 
+to the global directory. The issue is that I don’t know how to activate the virtual environment and then run my script and then turn it back off… Unless I create a bash script!</p>
+
+<p>So that’s exactly what I did. Essentially in this bash script, I am turning on the virtual environment that contains the installed packages needed for the program, I run the program, 
+and then I turn off the virtual environment. And this all happens every 15 minutes! Now I will let the record show that I was running into an issue where if I ran the script with its 
+absolute path, it won’t actually allow the program to save the pickle… Wack man… So I instead decided to just change directories into the project folder and run the script 
+relatively.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>crontab <span class="nt">-e</span>
+<span class="c"># insert -&gt; */15 * * * * /home/helen/projects/weather_scrapper/script.sh</span>
+</code></pre></div></div>
+
+<p>And now boom, you have a thing collecting weather data every 15 minutes!</p>
+
+<hr />
+
+<h1 id="part-3-graphing-collected-data">Part 3: Graphing collected data</h1>
+
+<p>By this point, I’ve sort of lost my purpose… I, more or less, just wanted to graph some stuff and play around with Plotly. So, I wrote a separate program called ‘graph.py’ 
+that does exactly that! In the program, after opening the pickle, I iterated through each row, appending the date and time (which I string formatted first), temperature, 
+dew point, humidity, and rainfall into separate lists because these lists are going to be used as the y-values with respective to the date time. Afterwards, I added each 
+individual ‘trace’, or line graph in this case, by stating the x-axis as the date-time string that was formatted beforehand and each y-axis as a different trace.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date_time</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'Temperature'</span><span class="p">,</span>
+               <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'royalblue'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date_time</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">dew_point</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'Dew Point'</span><span class="p">,</span>
+               <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">'firebrick'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="c1"># etc...
+</span></code></pre></div></div>
+
+<p>Now, I got a little bored and decided that I wanted to be able to view the different graphs by adding a drop down menu. After a bit of searching, I used the ‘update’ method 
+to update the layout of the graph. The thing to keep in mind is when updating the ‘visible’ list in args. The number of boolean values should be equivalent to the number of 
+traces that you added before, within that order as well. For example, if you add a trace that plots date-time vs. temperature and then add another trace that plots date-time 
+vs. dew point, then by specifying the ‘visible’ option as [True, True] will plot both graphs while [True, False] will only plot the date-time vs. temperature graph. The graph 
+of the data that I’ve collected so far can be viewed <a href="https://public.sonbyj01.xyz/projects/weather_scrapping/temp-plot.html">here</a>.</p>
+
+<p>And there it goes ladies and gentlemen, that’s it!</p>
+
+<p>If you liked this post, make sure you give it a thumbs up and smash that subscribe butto… Oh wait… Wrong platform…</p>
+
+<p>Thanks for reading -</p>
+
+<p>sonbyj01</p>
+
+:ET
