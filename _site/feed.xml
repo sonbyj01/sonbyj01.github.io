@@ -4,13 +4,116 @@
  <title>Henry J. Son</title>
  <link href="http://localhost:4000/feed.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2020-10-09T15:03:26-04:00</updated>
+ <updated>2020-11-05T14:55:15-05:00</updated>
  <id>http://localhost:4000/</id>
  <author>
    <name>Henry J. Son</name>
    <email>sonbyj01@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Becoming the next Google - HomeLab Experience [Part 1]</title>
+   <link href="http://localhost:4000/HomeLab-Experience-pt1/"/>
+   <updated>2020-11-03T19:00:00-05:00</updated>
+   <id>http://localhost:4000/HomeLab-Experience[pt1]</id>
+   <content type="html">&lt;hr /&gt;
+&lt;p&gt;Ah so it’s been an extremely long time since I’ve lasted posted BECAUSE I have this thing where I would start a project… and then move onto a different one despite not finishing the previous project…&lt;/p&gt;
+
+&lt;p&gt;Now some of you might be wondering, oh why don’t you just finish the first project before you move on blah blah.&lt;/p&gt;
+
+&lt;p&gt;Well here’s my 20000IQ answer: if you are working on one project but get bored of it, move onto a second project; then, when you get bored of that second project, just work on the first project. Boom!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2020-11-05-HomeLab-Experience[pt1]/smort.jpg&quot; alt=&quot;smort&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now the tiny issue that I ran into was that I went from project one to project two and got bored of project two, I would move onto project three… and then onto project four… and then onto project five… So yeah, that really didn’t work out for me aha&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2020-11-05-HomeLab-Experience[pt1]/soundsgooddoesntwork.jpeg&quot; alt=&quot;soundsgood&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Anyhow, here we are so let’s get started!&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;whats-a-homelab&quot;&gt;What’s a HomeLab????&lt;/h1&gt;
+&lt;p&gt;Well from my perspective, there are different spins on how people approach their own homelab set up.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;On one hand, some people host services to provide a way of securing and maintaining their own data instead of having their data on a third-party server.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;On the another hand, some people use it to torture themselves by testing and playing with different types of hardware and software solutions while having little-to-no impact on anything ‘major’ (i.e. on a company server).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2020-11-05-HomeLab-Experience[pt1]/linuxisfree.jpg&quot; alt=&quot;linuxisfree&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Now some people will use both hands by setting up and using their homelabs for both purposes as stated before, which is my ultimate goal.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;okay-so-whats-your-set-up-like&quot;&gt;Okay, so what’s your set up like?&lt;/h1&gt;
+&lt;p&gt;That’s a very good question that I don’t even have an answer to yet. This is mostly because I’m trying to reconfigure my home network by separating my ‘homelab network’ from my ‘rest-of-the-house’ network. By doing so, whenever I need to make some network configurations to my homelab network, it won’t affect the network stability for the rest of my family.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;alright-then-what-about-hardware&quot;&gt;Alright, then what about hardware?&lt;/h1&gt;
+&lt;p&gt;Oh this I can answer with some confidence! I have:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;3 Dell PowerEdge Servers
+    &lt;ul&gt;
+      &lt;li&gt;PowerEdge R320&lt;/li&gt;
+      &lt;li&gt;PowerEdge R510&lt;/li&gt;
+      &lt;li&gt;PowerEdge R710&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;1 Custom Built Virtualization Server&lt;/li&gt;
+  &lt;li&gt;Bunch of small computers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’m too lazy to pull out the specs for each server so I won’t. For the three PowerEdge servers, I bought them in 2019 (so about a year ago) on &lt;a href=&quot;https://www.ebay.com/&quot;&gt;eBay&lt;/a&gt; using a very dangerous and tempting website called &lt;a href=&quot;https://www.labgopher.com/&quot;&gt;LabGopher&lt;/a&gt;. For the custom built virtualization server, I bought the components also from &lt;a href=&quot;https://www.ebay.com/&quot;&gt;eBay&lt;/a&gt;; I will probably create a separate post that talks more about the virtualization server and the components I bought. For the bunch of small computers, my dad used to administer the TOEFL exam so we have a bunch of small computers that I now use for my homelab:) They’re good enough to do some lightwork server stuff.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2020-11-05-HomeLab-Experience[pt1]/custombuild.jpg&quot; alt=&quot;custombuild&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;so-now-what&quot;&gt;So now what?&lt;/h1&gt;
+&lt;p&gt;Alright so here’s the situation: I own two domains (hson.dev, sonbyj01.xyz) that currently don’t have much functionality. That’s because most of my services haven’t been configured yet so I can’t reverse proxy those domains to the proper services quite yet.&lt;/p&gt;
+
+&lt;p&gt;As of now, I have a general idea of how I want to configure my network:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2020-11-05-HomeLab-Experience[pt1]/netdiagram.jpg&quot; alt=&quot;netdiagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now despite the saying ‘A picture is worth a thousand words,’ you probably don’t know what’s going on here and moreover why I have this particular set up in mind.&lt;/p&gt;
+
+&lt;p&gt;So as I’ve mentioned before, I wanted to separate my home network into two parts, sort of like an onion. The ‘first’ layer is in white and that’s from the first &lt;a href=&quot;https://en.wikipedia.org/wiki/Network_address_translation&quot;&gt;NAT&lt;/a&gt;-ing that my Asus router does. All the access points, computers, laptops, phones, etc. in the house, for the most part, will connect to this ‘layer’ of the network. &lt;u&gt;From here-on-out, I will call this layer 'NAT-1'.&lt;/u&gt; Now there is a second layer of &lt;a href=&quot;https://en.wikipedia.org/wiki/Network_address_translation&quot;&gt;NAT&lt;/a&gt;-ing that occurs, and pfSense will handle &lt;a href=&quot;https://en.wikipedia.org/wiki/Local_area_network&quot;&gt;LAN&lt;/a&gt; network traffic that’s represented in mint green. &lt;u&gt;From here-on-out, I will call this layer 'NAT-2'.&lt;u&gt;&lt;/u&gt;&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;My homelab will essentially live in that second ‘layer’, where it’s colored in mint green.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now looking back at the diagram, you can clearly see that I have put two of my small computers on NAT-1, keller and balboa (please excuse my handwriting). Keller, which is running &lt;a href=&quot;https://www.centos.org/download/&quot;&gt;CentOS 7&lt;/a&gt;, has the &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; engine running and will be hosting my very important &lt;a href=&quot;https://github.com/itzg/docker-minecraft-server&quot;&gt;Minecraft server container&lt;/a&gt; because I want to still be able to play &lt;a href=&quot;https://www.minecraft.net/en-us&quot;&gt;Minecraft&lt;/a&gt; despite my entire homelab being offline. Balboa, which is running &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian 10&lt;/a&gt;, also has the &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; engine running but instead will be hosting the &lt;a href=&quot;https://docs.linuxserver.io/images/docker-unifi-controller&quot;&gt;UniFi Controller container&lt;/a&gt; for my access points.&lt;/p&gt;
+
+&lt;p&gt;Moving onto NAT-2, this is where the fun stuff begins and ends… Mostly because I have’t figured out how I want to approach it… Just off the top of my head, I know I want to get &lt;a href=&quot;https://en.wikipedia.org/wiki/Link_aggregation&quot;&gt;link aggregation&lt;/a&gt; to work so I can increase the bandwidth between servers, but right now I can’t even access the &lt;a href=&quot;https://www.pfsense.org/&quot;&gt;pfSense&lt;/a&gt; UI so I have to first figure that out before I even move on. Once I can access the UI for my router, then I will most likely set it as my &lt;a href=&quot;https://en.wikipedia.org/wiki/DMZ_%28computing%29&quot;&gt;DMZ&lt;/a&gt; host from my Asus router.&lt;/p&gt;
+
+&lt;p&gt;So, in all, as of now, none of my services are up and running, but I hope that during winter break I can spend more time with my servers so I can actually properly set them up.&lt;/p&gt;
+
+&lt;p&gt;Tentatively, I have a couple of services that I want to get up and running once I figure out my entire network situation.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hub.docker.com/r/linuxserver/swag&quot;&gt;SWAG&lt;/a&gt; - to handle all my http/https requests (&lt;a href=&quot;https://en.wikipedia.org/wiki/Reverse_proxy&quot;&gt;reverse proxying&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/linuxserver/docker-wireguard&quot;&gt;WireGuard&lt;/a&gt;/&lt;a href=&quot;https://github.com/linuxserver/docker-openvpn-as&quot;&gt;OpenVPN&lt;/a&gt; - VPN access to my internal homelab network and also to secure my traffic when I’m on a public network&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/linuxserver/docker-dokuwiki&quot;&gt;DokuWiki&lt;/a&gt; - wiki page for my family whenever there’s some technical issue… so they don’t always have to call me…&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/linuxserver/docker-nextcloud&quot;&gt;NextCloud&lt;/a&gt; - I don’t want to pay for Google Drive storage anymore&amp;gt;:(&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/osixia/docker-openldap&quot;&gt;OpenLDAP&lt;/a&gt; - enable authentication to different self-hosted services&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/keycloak/keycloak&quot;&gt;KeyCloak&lt;/a&gt; - enable SSO in conjunction with OpenLDAP&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But that’s all the update I have so far in regards to my homelab set up!&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading -&lt;/p&gt;
+
+&lt;p&gt;sonbyj01&lt;/p&gt;
+
+&lt;hr /&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Automating web scrapper - Wunderground</title>
